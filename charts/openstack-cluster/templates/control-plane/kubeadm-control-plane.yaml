@@ -21,7 +21,7 @@ files:
     owner: root:root
     permissions: "0644"
 preKubeadmCommands:
-  - cat {{ $kubeProxyConfigurationPath }} >> {{ $kubeadmPath }}
+  - if !grep -q KubeProxyConfiguration {{ $kubeadmPath }}; then cat {{ $kubeProxyConfigurationPath }} >> {{ $kubeadmPath }}; fi
 {{- end }}
 {{- end }}
 
